@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="survey_survey_view_form" model="ir.ui.view">
+        <field name="name">survey.survey.view.form.inherit.survey_template</field>
+        <field name="model">survey.survey</field>
+        <field name="inherit_id" ref="survey.survey_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="template"/>
+            </xpath> 
+            <xpath expr="//button[@name='action_send_survey']" position="before">
+                <button name="create_from_template"
+                    string="Create from Template"
+                    type="object"
+                     attrs="{'invisible':[('template','!=', True)]}" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
